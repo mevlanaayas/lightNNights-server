@@ -39,8 +39,8 @@ func NewAPI(config *config.Config, scoreHandler *score.Handler) *API {
 	v1 := e.Group("/v1")
 
 	g := v1.Group("/score")
-	g.GET("", nil)
-	g.POST("", nil)
+	// g.GET("", nil)
+	g.POST("/", scoreHandler.Save)
 
 	api.echo = e
 	return api
