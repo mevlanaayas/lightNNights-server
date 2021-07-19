@@ -45,7 +45,7 @@ func Run() error {
 		return err
 	}
 
-	db := mongoClient.Database("user")
+	db := mongoClient.Database("lightNNights")
 
 	mongoCommandRepository := score.NewMongoCommandRepository(db)
 	mongoQueryRepository := score.NewMongoQueryRepository(db)
