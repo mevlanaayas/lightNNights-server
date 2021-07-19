@@ -40,7 +40,7 @@ func NewAPI(config *config.Config, scoreHandler *score.Handler) *API {
 
 	g := v1.Group("/score")
 	// g.GET("", nil)
-	g.POST("/", scoreHandler.Save)
+	g.POST("", scoreHandler.Save)
 
 	api.echo = e
 	return api
