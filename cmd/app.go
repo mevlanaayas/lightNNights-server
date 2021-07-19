@@ -8,7 +8,6 @@ import (
 	"lightNNights/api"
 	"lightNNights/config"
 	"lightNNights/score"
-	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -23,7 +22,7 @@ func Run() error {
 		return err
 	}
 
-	mongoClient, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_URL")))
+	mongoClient, err := mongo.NewClient(options.Client().ApplyURI(c.MongoUrl))
 	if err != nil {
 		return err
 	}
