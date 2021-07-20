@@ -10,7 +10,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: lightNNights
+  IMAGE_NAME: lightnnights
 
 jobs:
   push:
