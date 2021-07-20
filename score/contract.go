@@ -18,8 +18,8 @@ type (
 	}
 
 	Score struct {
-		Id    string `bson:"id,omitempty"`
-		Point int64  `bson:"point,omitempty"`
+		Id    string `bson:"id,omitempty" json:"id"`
+		Point int64  `bson:"point,omitempty" json:"point"`
 	}
 )
 
