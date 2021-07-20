@@ -21,10 +21,10 @@ func (receiver QueryService) Get(id string) errors.Error {
 	return nil
 }
 
-func (receiver QueryService) List() errors.Error {
-	err := receiver.repository.List()
+func (receiver QueryService) List() ([]Score, errors.Error) {
+	scores, err := receiver.repository.List()
 	if err != nil {
-		return errors.New("error while listing scores", 100, fmt.Errorf("error while listing scores \n\t%v", err))
+		return nil, errors.New("error while listing scores", 100, fmt.Errorf("error while listing scores \n\t%v", err))
 	}
-	return nil
+	return scores, nil
 }

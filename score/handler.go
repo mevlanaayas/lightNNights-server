@@ -60,3 +60,28 @@ func (receiver Handler) save(ctx echo.Context) errors.Error {
 	}
 	return nil
 }
+
+func (receiver Handler) List(ctx echo.Context) error {
+	scores, err := receiver.list()
+	if err != nil {
+		logrus.Error(err.Error())
+		return ctx.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"errorCode":    err.Code(),
+			"errorMessage": err.Message(),
+		})
+	}
+	response := BaseResponse{
+		Success: true,
+		Result:  scores,
+	}
+	return ctx.JSON(http.StatusOK, response)
+}
+
+func (receiver Handler) list() ([]Score, errors.Error) {
+	scores, err := receiver.queryService.List()
+
+	if err != nil {
+		return nil, errors.New("error while listing score", 1, fmt.Errorf("error while listing score \n\t%v", err))
+	}
+	return scores, nil
+}
